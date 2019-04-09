@@ -1,32 +1,28 @@
 package com.epam.entity;
 
+import java.io.Serializable;
+
 public abstract class Fare implements Entity {
-    int id;
     String name;
     int intCalls;
     int extCalls;
     int smsAmount;
 
-    public Fare(int id, String name, int intCalls, int extCalls, int smsAmount) {
-        this.id = id;
+    public Fare(String name, int intCalls, int extCalls, int smsAmount) {
         this.name = name;
         this.intCalls = intCalls;
         this.extCalls = extCalls;
         this.smsAmount = smsAmount;
     }
 
-    abstract double calculateFee();
-
-    public int getId() {
-        return this.id;
+    public String getResourceFile(){
+        return "fares.txt";
     }
+
+    public abstract Double calculateFee();
 
     public String getName() {
         return this.name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setName(String name) {
@@ -43,5 +39,11 @@ public abstract class Fare implements Entity {
 
     public void setSmsAmount(int smsAmount) {
         this.smsAmount = smsAmount;
+    }
+
+    public int getIndex(){return 0;}
+
+    public int compareTo(Fare n){
+        return this.calculateFee().compareTo(n.calculateFee());
     }
 }

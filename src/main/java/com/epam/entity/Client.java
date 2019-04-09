@@ -1,14 +1,16 @@
 package com.epam.entity;
 
 public class Client implements Entity {
-    int id;
     String name;
-    int fareId;
+    String fareId;
 
-    public Client(int id, String name) {
-        this.id = id;
+    public Client(String name, String fareId) {
         this.name = name;
-        this.fareId = fareId;
+        setFareId(fareId);
+    }
+
+    public String getResourceFile(){
+        return "clients.txt";
     }
 
     public int getId() {
@@ -19,19 +21,17 @@ public class Client implements Entity {
         return null;
     }
 
-    public int getFareId() {
+    public String getFareId() {
         return fareId;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setFareId(int fareId) {
+    public void setFareId(String fareId) {
         this.fareId = fareId;
     }
+
+    public int getIndex(){return 1;}
 }

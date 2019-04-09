@@ -1,6 +1,9 @@
 package com.epam.entity;
 
-public interface Entity {
-    int getId();
+import java.io.Serializable;
+
+public interface Entity extends Serializable, Comparable<Entity> {
+    int getIndex();
     String getName();
+    String getResourceFile();
 }

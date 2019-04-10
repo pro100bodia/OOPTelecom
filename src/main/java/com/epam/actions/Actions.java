@@ -39,8 +39,12 @@ public class Actions<T extends Entity>{
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            fileOutputStream.close();
-            objectOutputStream.close();
+            try {
+                fileOutputStream.close();
+                objectOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

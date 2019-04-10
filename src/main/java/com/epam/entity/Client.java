@@ -10,7 +10,7 @@ public class Client implements Entity {
     }
 
     public String getResourceFile(){
-        return "clients.txt";
+        return System.getProperty("user.home") + "\\" + "clients.txt";
     }
 
     public int getId() {

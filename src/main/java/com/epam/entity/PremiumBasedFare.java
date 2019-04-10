@@ -9,7 +9,7 @@ public class PremiumBasedFare extends Fare implements Internetable, TVable {
         setTVchanels(tvChanels);
     }
 
-    Double calculateFee() {
+    public Double calculateFee() {
         return new Double(intCalls * .025f + extCalls * .05f + smsAmount * .07f + megabytes * .2f + tvChanels * .2f);
     }
 

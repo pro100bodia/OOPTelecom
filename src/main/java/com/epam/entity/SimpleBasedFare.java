@@ -5,7 +5,7 @@ public class SimpleBasedFare extends Fare {
         super(name, intCalls, extCalls, smsAmount);
     }
 
-    Double calculateFee() {
+    public Double calculateFee() {
         return new Double(intCalls * .1f + extCalls * .2f + smsAmount * .3f);
     }
 }

@@ -1,8 +1,7 @@
 package com.epam.entity;
 
-import java.io.Serializable;
 
-public abstract class Fare implements Entity {
+public abstract class Fare implements Entity, Comparable<Fare> {
     String name;
     int intCalls;
     int extCalls;
@@ -16,7 +15,7 @@ public abstract class Fare implements Entity {
     }
 
     public String getResourceFile(){
-        return "fares.txt";
+        return System.getProperty("user.home") + "\\" + "fares.txt";
     }
 
     public abstract Double calculateFee();

@@ -8,7 +8,7 @@ public class TVBasedFare extends Fare implements TVable {
         setTVchanels(tvChanels);
     }
 
-    Double calculateFee() {
+    public Double calculateFee() {
         return new Double(intCalls * .05f + extCalls * .1f + smsAmount * .15f + tvChanels * .4f);
     }
 

@@ -3,6 +3,8 @@ package com.epam.entity;
 import java.io.Serializable;
 
 public abstract class Fare implements Entity {
+    private static long serialVersionUID = 0;
+
     String name;
     int intCalls;
     int extCalls;

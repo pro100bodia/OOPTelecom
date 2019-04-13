@@ -144,10 +144,14 @@ public class MainMenu {
     }
 
     private void sortFares(){
-        List<Fare> list = clientsActions.deserialize();
+        List<Fare> list = faresActions.deserialize();
         List<Fare> sortedList = new ArrayList<>(list);
         Collections.sort(sortedList);
-        System.out.println(sortedList);
+
+        for(Fare f: sortedList)
+        {
+            System.out.println(f.getName() + " " + f.calculateFee());
+        }
     }
 
     private void findFares(){
@@ -171,7 +175,7 @@ public class MainMenu {
 
 
     private static void callSubMenu(){
-        System.out.println("Choose the option(Add_fare, Add_client, Get_fares_list, Get_clients_list, Exit):");
+        System.out.println("Choose the option(Add_fare, Add_client, Get_fares_list, Get_clients_list, Get_clients_num, Sort_fares, Find_fares, Exit):");
 
         s = new Scanner(System.in);
         optionString = s.nextLine();

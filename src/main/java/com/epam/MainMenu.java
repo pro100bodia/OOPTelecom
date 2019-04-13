@@ -112,13 +112,16 @@ public class MainMenu {
             System.out.println("No such fare");
         }
 
+        System.out.println("new clients list");
+        for(Client c: clientsList)
+        {
+            System.out.println(c.getName() + " " + c.getFareId());
+        }
     }
 
     private void outputFaresList(){
-        System.out.println("Entering outputFaresList");
         List<Fare> list = faresActions.deserialize();
 
-        System.out.println("list: " + list);
         for(Entity l: list)
         {
             System.out.println(l.getName());
@@ -127,9 +130,9 @@ public class MainMenu {
 
     private void outputClientsList(){
 
-        List<Entity> list = clientsActions.deserialize();
+        List<Client> list = clientsActions.deserialize();
 
-        for(Entity l: list)
+        for(Client l: list)
         {
             System.out.println(l.getName());
         }
@@ -197,6 +200,7 @@ public class MainMenu {
 
         faresList = faresActions.deserialize();
         clientsList = clientsActions.deserialize();
+        System.out.println("clientsList: " + clientsList);
 
         callSubMenu();
     }

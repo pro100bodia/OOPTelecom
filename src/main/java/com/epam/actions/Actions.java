@@ -52,7 +52,12 @@ public class Actions<T extends Entity>{
 
 
         }catch(EOFException e){
-            return new ArrayList<T>();
+            try {
+                objectInputStream.close();
+                return new ArrayList<T>();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }catch(IOException e){
             e.printStackTrace();
         }catch (ClassNotFoundException e){

@@ -18,7 +18,7 @@ public class Client implements Entity {
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public String getFareId() {

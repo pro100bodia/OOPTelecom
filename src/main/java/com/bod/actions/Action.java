@@ -1,10 +1,10 @@
 package com.bod.actions;
 
 import com.bod.entity.Client;
+import com.bod.entity.Entity;
 import com.bod.entity.Fare;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Action {
     private SerializeService<Fare> faresSerializeService;
@@ -30,8 +30,23 @@ public class Action {
     }
 
     public void addClient(String name, String fareName){
-        clientsList.add(new Client(name, fareName));
-        clientsSerializeService.serialize(clientsList);
+
+        boolean fareExists = false;
+
+        for(Entity fl: faresList)
+        {
+            if(fareName.equals(fl.getName())){
+                fareExists = true;
+                clientsList.add(new Client(name, fareName));
+                clientsSerializeService.serialize(clientsList);
+                break;
+            }
+        }
+
+        if(!fareExists){
+            System.out.println("No such fare");
+        }
+
     }
 
     public List getClientsList(){
@@ -62,3 +77,6 @@ public class Action {
         return list;
     }
 }
+
+
+

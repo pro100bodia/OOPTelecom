@@ -9,3 +9,6 @@ public class SimpleBasedFare extends Fare {
         return new Double(intCalls * .1f + extCalls * .2f + smsAmount * .3f);
     }
 }
+
+
+

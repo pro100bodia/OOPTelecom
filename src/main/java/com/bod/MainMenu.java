@@ -38,10 +38,6 @@ public class MainMenu {
                 System.out.println("input name, internalCalls(minutes), externalCalls(minutes), smsAmount(number)");
 
                 servicesArr = multipleInput(3);
-                System.out.println("numbers");
-                System.out.println(servicesArr[0]);
-                System.out.println(servicesArr[1]);
-                System.out.println(servicesArr[2]);
 
                 fare = new SimpleBasedFare(name, servicesArr[0], servicesArr[1], servicesArr[2]);
                 break;
@@ -80,20 +76,9 @@ public class MainMenu {
 
         List<Entity> faresList = action.getFaresList();
 
-        boolean fareExists = false;
 
-        for(Entity fl: faresList)
-        {
-            if(fareName.equals(fl.getName())){
-                fareExists = true;
-                action.addClient(name, fareName);
-                break;
-            }
-        }
+        action.addClient(name, fareName);
 
-        if(!fareExists){
-            System.out.println("No such fare");
-        }
     }
 
     private void outputFaresList(){
@@ -190,7 +175,6 @@ public class MainMenu {
         return result;
     }
 }
-
 
 
 

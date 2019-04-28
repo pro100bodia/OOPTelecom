@@ -3,10 +3,10 @@ package com.bod.actions;
 import com.bod.entity.Entity;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class SerializeService<T extends Entity>{
+public class SerializeService<T extends Entity> {
     private String fileName;
 
     private FileOutputStream fileOutputStream;
@@ -15,13 +15,13 @@ public class SerializeService<T extends Entity>{
     private FileInputStream fileInputStream;
     private ObjectInputStream objectInputStream;
 
-    private ArrayList<T> list;
+    private LinkedList<T> list;
 
     public SerializeService(String entity) {
         fileName = System.getProperty("user.home") + "\\" + entity;
     }
 
-    public void serialize(List entity){
+    public void serialize(List entity) {
 
         try {
             this.fileOutputStream = new FileOutputStream(fileName);
@@ -42,19 +42,19 @@ public class SerializeService<T extends Entity>{
     }
 
     public List<T> deserialize() {
-        list = new ArrayList<>();
+        list = new LinkedList<>();
 
         try {
             this.fileInputStream = new FileInputStream(fileName);
             this.objectInputStream = new ObjectInputStream(fileInputStream);
 
-            list = (ArrayList<T>)objectInputStream.readObject();
+            list = (LinkedList<T>)objectInputStream.readObject();
 
 
         }catch(EOFException e){
             try {
                 objectInputStream.close();
-                return new ArrayList<T>();
+                return new LinkedList<T>();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -68,13 +68,13 @@ public class SerializeService<T extends Entity>{
             } catch (IOException e) {
                 e.printStackTrace();
             } catch(NullPointerException e){
-                return new ArrayList<T>();
+                return new LinkedList<T>();
             }
         }
 
         return list;
     }
-
-
 }
-//todo change arraylist to linkedlist in deserialize method
+
+
+

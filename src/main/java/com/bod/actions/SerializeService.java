@@ -77,5 +77,4 @@ public class SerializeService<T extends Entity>{
 
 
 }
-
-//todo move fare creation, faresList filling and serialization to external class
+//todo change arraylist to linkedlist in deserialize method

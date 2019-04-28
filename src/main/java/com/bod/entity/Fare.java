@@ -20,6 +20,18 @@ public abstract class Fare implements Entity, Comparable<Fare> {
         return "fares.txt";
     }
 
+    public int getIntCalls() {
+        return intCalls;
+    }
+
+    public int getExtCalls() {
+        return extCalls;
+    }
+
+    public int getSmsAmount() {
+        return smsAmount;
+    }
+
     public abstract Double calculateFee();
 
     public String getName() {

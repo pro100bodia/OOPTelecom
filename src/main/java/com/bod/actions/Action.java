@@ -3,7 +3,8 @@ package com.bod.actions;
 import com.bod.entity.Client;
 import com.bod.entity.Fare;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Action {
     private SerializeService<Fare> faresSerializeService;
@@ -24,4 +25,40 @@ public class Action {
         faresSerializeService.serialize(faresList);
     }
 
+    public List getFaresList(){
+        return faresSerializeService.deserialize();
+    }
+
+    public void addClient(String name, String fareName){
+        clientsList.add(new Client(name, fareName));
+        clientsSerializeService.serialize(clientsList);
+    }
+
+    public List getClientsList(){
+        return clientsSerializeService.deserialize();
+    }
+
+    public int getClientsNum(){
+        return clientsList.size();
+    }
+
+    public List<Fare> sortFares() {
+        List<Fare> sortedList = new ArrayList<>(faresList);
+        Collections.sort(sortedList);
+        return sortedList;
+    }
+
+    public List<Fare> getFaresFromRange(Double from, Double to){
+        List<Fare> list = new LinkedList<>();
+
+        for(int i = 0; i < faresList.size(); i++)
+        {
+            if(faresList.get(i).calculateFee() >= from &&
+               faresList.get(i).calculateFee() <= to){
+                list.add(faresList.get(i));
+
+            }
+        }
+        return list;
+    }
 }

@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public interface TVable {
     void setTVchanels(int tVchannels);

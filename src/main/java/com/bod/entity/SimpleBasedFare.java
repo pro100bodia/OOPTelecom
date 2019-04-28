@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public class SimpleBasedFare extends Fare {
     public SimpleBasedFare(String name, int intCalls, int extCalls, int smsAmount) {

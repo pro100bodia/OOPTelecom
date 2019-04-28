@@ -1,6 +1,6 @@
-package com.epam.actions;
+package com.bod.actions;
 
-import com.epam.entity.Fare;
+import com.bod.entity.Fare;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -14,15 +14,15 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class ActionsTest {
+public class SerializeServiceTest {
     private String fileName;
-    private Actions<Fare> fareActions;
+    private SerializeService<Fare> fareSerializeService;
     private List<Fare>testList;
 
     @Before
     public void setUp() throws Exception {
         fileName = "farestest.txt";
-        fareActions = new Actions<Fare>(fileName);
+        fareSerializeService = new SerializeService<Fare>(fileName);
         testList = new ArrayList<>();
     }
 
@@ -34,7 +34,7 @@ public class ActionsTest {
     public void shouldThrowIOExceptionOnSerialize() throws IOException {
         thrown.expect(IOException.class);
         thrown.expectMessage("IOException in serialize()");
-        fareActions.serialize(testList);
+        fareSerializeService.serialize(testList);
 
     }
 
@@ -44,7 +44,7 @@ public class ActionsTest {
     public void shouldThrowEOFExceptionOnDeserialize() throws EOFException {
         thrown.expect(EOFException.class);
         thrown.expectMessage("EOFException in serialize()");
-        testList = fareActions.deserialize();
+        testList = fareSerializeService.deserialize();
     }
 
     @Ignore
@@ -53,7 +53,7 @@ public class ActionsTest {
         thrown.expect(IOException.class);
         thrown.expectMessage("IOException in serialize()");
         assertNull(thrown);
-        testList = fareActions.deserialize();
+        testList = fareSerializeService.deserialize();
     }
 
     @Ignore
@@ -61,7 +61,7 @@ public class ActionsTest {
     public void shouldThrowClassNotFoundExceptionOnDeserialize() throws ClassNotFoundException {
         thrown.expect(ClassNotFoundException.class);
         thrown.expectMessage("ClassNotFoundException in serialize()");
-        testList = fareActions.deserialize();
+        testList = fareSerializeService.deserialize();
     }
 
     @Ignore
@@ -69,6 +69,6 @@ public class ActionsTest {
     public void shouldThrowNullPointerExceptionOnDeserialize() throws NullPointerException {
         thrown.expect(NullPointerException.class);
         thrown.expectMessage("NullPointerException in serialize()");
-        testList = fareActions.deserialize();
+        testList = fareSerializeService.deserialize();
     }
 }

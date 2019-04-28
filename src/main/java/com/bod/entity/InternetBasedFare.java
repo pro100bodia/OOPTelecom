@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public class InternetBasedFare extends Fare implements Internetable {
     int megabytes;

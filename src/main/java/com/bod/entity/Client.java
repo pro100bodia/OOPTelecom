@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public class Client implements Entity {
     String name;

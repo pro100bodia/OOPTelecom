@@ -1,12 +1,12 @@
-package com.epam.actions;
+package com.bod.actions;
 
-import com.epam.entity.Entity;
+import com.bod.entity.Entity;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Actions<T extends Entity>{
+public class SerializeService<T extends Entity>{
     private String fileName;
 
     private FileOutputStream fileOutputStream;
@@ -17,7 +17,7 @@ public class Actions<T extends Entity>{
 
     private ArrayList<T> list;
 
-    public Actions(String entity) {
+    public SerializeService(String entity) {
         fileName = System.getProperty("user.home") + "\\" + entity;
     }
 
@@ -77,3 +77,5 @@ public class Actions<T extends Entity>{
 
 
 }
+
+//todo move fare creation, faresList filling and serialization to external class

@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 
 public abstract class Fare implements Entity, Comparable<Fare> {

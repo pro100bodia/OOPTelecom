@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public class TVBasedFare extends Fare implements TVable {
     int tvChanels;

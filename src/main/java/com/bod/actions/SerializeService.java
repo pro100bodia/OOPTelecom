@@ -21,7 +21,7 @@ public class SerializeService<T extends Entity> {
         fileName = System.getProperty("user.home") + "\\" + entity;
     }
 
-    public void serialize(List entity) {
+    public void serialize(List entity){
 
         try {
             this.fileOutputStream = new FileOutputStream(fileName);
@@ -39,6 +39,7 @@ public class SerializeService<T extends Entity> {
                 e.printStackTrace();
             }
         }
+
     }
 
     public List<T> deserialize() {

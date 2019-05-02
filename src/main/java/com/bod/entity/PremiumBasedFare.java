@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public class PremiumBasedFare extends Fare implements Internetable, TVable {
     int megabytes, tvChanels;

@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 public class Client implements Entity {
     String name;
@@ -9,13 +9,6 @@ public class Client implements Entity {
         setFareId(fareId);
     }
 
-    public String getResourceFile(){
-        return "clients.txt";
-    }
-
-    public int getId() {
-        return 0;
-    }
 
     public String getName() {
         return name;
@@ -25,8 +18,6 @@ public class Client implements Entity {
         return fareId;
     }
 
-
-
     public void setName(String name) {
         this.name = name;
     }
@@ -35,5 +26,4 @@ public class Client implements Entity {
         this.fareId = fareId;
     }
 
-    public int getIndex(){return 1;}
 }

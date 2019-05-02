@@ -1,12 +1,12 @@
-package com.epam.actions;
+package com.bod.actions;
 
-import com.epam.entity.Entity;
+import com.bod.entity.Entity;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Actions<T extends Entity>{
+public class SerializeService<T extends Entity> {
     private String fileName;
 
     private FileOutputStream fileOutputStream;
@@ -15,9 +15,9 @@ public class Actions<T extends Entity>{
     private FileInputStream fileInputStream;
     private ObjectInputStream objectInputStream;
 
-    private ArrayList<T> list;
+    private List<T> resultList;
 
-    public Actions(String entity) {
+    public SerializeService(String entity) {
         fileName = System.getProperty("user.home") + "\\" + entity;
     }
 
@@ -39,22 +39,23 @@ public class Actions<T extends Entity>{
                 e.printStackTrace();
             }
         }
+
     }
 
     public List<T> deserialize() {
-        list = new ArrayList<>();
+        resultList = new LinkedList<>();
 
         try {
             this.fileInputStream = new FileInputStream(fileName);
             this.objectInputStream = new ObjectInputStream(fileInputStream);
 
-            list = (ArrayList<T>)objectInputStream.readObject();
+            resultList = (LinkedList<T>) objectInputStream.readObject();
 
 
         }catch(EOFException e){
             try {
                 objectInputStream.close();
-                return new ArrayList<T>();
+                return new LinkedList<T>();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -68,12 +69,10 @@ public class Actions<T extends Entity>{
             } catch (IOException e) {
                 e.printStackTrace();
             } catch(NullPointerException e){
-                return new ArrayList<T>();
+                return new LinkedList<T>();
             }
         }
 
-        return list;
+        return resultList;
     }
-
-
 }

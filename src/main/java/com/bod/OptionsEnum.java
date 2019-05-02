@@ -1,6 +1,6 @@
-package com.epam;
+package com.bod;
 
 public enum OptionsEnum {
     ADD_FARE, ADD_CLIENT, GET_FARES_LIST, GET_CLIENTS_LIST, GET_CLIENTS_NUM, SORT_FARES, FIND_FARES, EXIT,
-    SIMPLE, INTERNET, TV, PREMIUM;
+    SIMPLE, INTERNET, TV, PREMIUM
 }

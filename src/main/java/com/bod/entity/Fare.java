@@ -1,4 +1,4 @@
-package com.epam.entity;
+package com.bod.entity;
 
 
 public abstract class Fare implements Entity, Comparable<Fare> {
@@ -18,6 +18,18 @@ public abstract class Fare implements Entity, Comparable<Fare> {
 
     public String getResourceFile(){
         return "fares.txt";
+    }
+
+    public int getIntCalls() {
+        return intCalls;
+    }
+
+    public int getExtCalls() {
+        return extCalls;
+    }
+
+    public int getSmsAmount() {
+        return smsAmount;
     }
 
     public abstract Double calculateFee();

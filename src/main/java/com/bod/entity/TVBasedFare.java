@@ -22,6 +22,3 @@ public class TVBasedFare extends Fare implements TVable {
 
 
 }
-
-
-

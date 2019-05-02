@@ -11,29 +11,34 @@ public class MainMenu {
     static String optionString;
     static OptionsEnum optionsEnum;
     static Action action;
-    String name;
+    static String name;
 
-    private int[] multipleInput(int size){
+    public static void main(String[] args) {
+        action = new Action();
+        action.init();
+
+        callSubMenu();
+    }
+
+    private static int[] multipleInput(int size) {
         name = s.nextLine();
 
-        int[] servicesArr = new int [size];
-        for(int i = 0; i < size; i++)
-        {
+        int[] servicesArr = new int[size];
+        for (int i = 0; i < size; i++) {
             servicesArr[i] = s.nextInt();
         }
 
         return servicesArr;
     }
 
-    private void addFair(){
+    private static void addFair() {
         System.out.println("Choose a fair type: Simple, Internet, TV, Premium");
         optionString = s.nextLine();
 
         Fare fare = null;
         int[] servicesArr;
 
-        switch (getParam(optionString))
-        {
+        switch (getParam(optionString)) {
             case SIMPLE:
                 System.out.println("input name, internalCalls(minutes), externalCalls(minutes), smsAmount(number)");
 
@@ -67,7 +72,7 @@ public class MainMenu {
         action.addFare(fare);
     }
 
-    private void addClient(){
+    private static void addClient() {
         System.out.println("Enter name and fare name");
         String name, fareName;
 
@@ -81,39 +86,36 @@ public class MainMenu {
 
     }
 
-    private void outputFaresList(){
+    private static void outputFaresList() {
         List<Fare> list = action.getFaresList();
 
-        for(Entity l: list)
-        {
+        for (Entity l : list) {
             System.out.println(l.getName());
         }
     }
 
-    private void outputClientsList(){
+    private static void outputClientsList() {
 
         List<Client> list = action.getClientsList();
 
-        for(Client l: list)
-        {
+        for (Client l : list) {
             System.out.println(l.getName());
         }
     }
 
-    private void outputClientsNum(){
+    private static void outputClientsNum() {
         System.out.println(action.getClientsNum());
     }
 
-    private void sortFares(){
+    private static void sortFares() {
         List<Fare> sortedList = action.sortFares();
 
-        for(Fare f: sortedList)
-        {
+        for (Fare f : sortedList) {
             System.out.println(f.getName() + " " + f.calculateFee());
         }
     }
 
-    private void findFares(){
+    private static void findFares() {
         System.out.println("Input fee range(from/to)");
 
         Double from, to;
@@ -123,14 +125,13 @@ public class MainMenu {
 
         List<Fare> list = action.getFaresFromRange(from, to);
 
-        for(Fare f: list)
-        {
-            System.out.println(f.getName() + ": " + f.calculateFee());
+        for (Fare f : list) {
+            System.out.printf("%s: %s\n", f.getName(), f.calculateFee());
         }
     }
 
 
-    private static void callSubMenu(){
+    private static void callSubMenu() {
         System.out.println("Choose the option(Add_fare, Add_client, Get_fares_list, Get_clients_list, Get_clients_num, Sort_fares, Find_fares, Exit):");
 
         s = new Scanner(System.in);
@@ -138,43 +139,43 @@ public class MainMenu {
 
         optionsEnum = getParam(optionString);
 
-        switch(optionsEnum)
-        {
-            case ADD_FARE: mainMenu.addFair(); break;
-            case ADD_CLIENT: mainMenu.addClient();break;
-            case GET_FARES_LIST: mainMenu.outputFaresList();break;
-            case GET_CLIENTS_LIST: mainMenu.outputClientsList();break;
-            case GET_CLIENTS_NUM: mainMenu.outputClientsNum();break;
-            case SORT_FARES: mainMenu.sortFares();break;
-            case FIND_FARES: mainMenu.findFares();break;
-            case EXIT: return;
+        switch (optionsEnum) {
+            case ADD_FARE:
+                addFair();
+                break;
+            case ADD_CLIENT:
+                addClient();
+                break;
+            case GET_FARES_LIST:
+                outputFaresList();
+                break;
+            case GET_CLIENTS_LIST:
+                outputClientsList();
+                break;
+            case GET_CLIENTS_NUM:
+                outputClientsNum();
+                break;
+            case SORT_FARES:
+                sortFares();
+                break;
+            case FIND_FARES:
+                findFares();
+                break;
+            case EXIT:
+                return;
         }
         callSubMenu();
     }
 
-    private static MainMenu mainMenu;
-
-    public static void main(String[] args) {
-        mainMenu = new MainMenu();
-
-        action = new Action();
-        action.init();
-
-        callSubMenu();
-    }
-
-    private static OptionsEnum getParam(String optionString){
+    private static OptionsEnum getParam(String optionString) {
         OptionsEnum result = null;
 
         try {
             result = OptionsEnum.valueOf(optionString.toUpperCase());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("incorrect option");
         }
 
         return result;
     }
 }
-
-
-

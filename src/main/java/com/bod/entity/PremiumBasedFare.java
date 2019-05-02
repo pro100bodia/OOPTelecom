@@ -29,6 +29,3 @@ public class PremiumBasedFare extends Fare implements Internetable, TVable {
         return 0;
     }
 }
-
-
-

@@ -20,6 +20,3 @@ public class InternetBasedFare extends Fare implements Internetable {
         return new Double(intCalls * .05f + extCalls * .1f + smsAmount * .15f + megabytes * .4f);
     }
 }
-
-
-

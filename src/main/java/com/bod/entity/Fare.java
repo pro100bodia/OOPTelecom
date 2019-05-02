@@ -61,6 +61,3 @@ public abstract class Fare implements Entity, Comparable<Fare> {
         return this.calculateFee().compareTo(n.calculateFee());
     }
 }
-
-
-

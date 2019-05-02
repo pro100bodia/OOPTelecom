@@ -4,6 +4,3 @@ public interface TVable {
     void setTVchanels(int tVchannels);
     int getTVchanels();
 }
-
-
-

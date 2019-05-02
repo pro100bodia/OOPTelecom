@@ -15,7 +15,7 @@ public class SerializeService<T extends Entity> {
     private FileInputStream fileInputStream;
     private ObjectInputStream objectInputStream;
 
-    private LinkedList<T> list;
+    private List<T> resultList;
 
     public SerializeService(String entity) {
         fileName = System.getProperty("user.home") + "\\" + entity;
@@ -43,13 +43,13 @@ public class SerializeService<T extends Entity> {
     }
 
     public List<T> deserialize() {
-        list = new LinkedList<>();
+        resultList = new LinkedList<>();
 
         try {
             this.fileInputStream = new FileInputStream(fileName);
             this.objectInputStream = new ObjectInputStream(fileInputStream);
 
-            list = (LinkedList<T>)objectInputStream.readObject();
+            resultList = (LinkedList<T>) objectInputStream.readObject();
 
 
         }catch(EOFException e){
@@ -73,9 +73,6 @@ public class SerializeService<T extends Entity> {
             }
         }
 
-        return list;
+        return resultList;
     }
 }
-
-
-

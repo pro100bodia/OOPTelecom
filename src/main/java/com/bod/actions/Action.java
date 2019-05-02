@@ -4,7 +4,10 @@ import com.bod.entity.Client;
 import com.bod.entity.Entity;
 import com.bod.entity.Fare;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Action {
     private SerializeService<Fare> faresSerializeService;
@@ -64,19 +67,16 @@ public class Action {
     }
 
     public List<Fare> getFaresFromRange(Double from, Double to){
-        List<Fare> list = new LinkedList<>();
+        List<Fare> boundedList = new LinkedList<>();
 
-        for(int i = 0; i < faresList.size(); i++)
+        for (Fare f : boundedList)
         {
-            if(faresList.get(i).calculateFee() >= from &&
-               faresList.get(i).calculateFee() <= to){
-                list.add(faresList.get(i));
+            if (f.calculateFee() >= from &&
+                    f.calculateFee() <= to) {
+                boundedList.add(f);
 
             }
         }
-        return list;
+        return boundedList;
     }
 }
-
-
-
